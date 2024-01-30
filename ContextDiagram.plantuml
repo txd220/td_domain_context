@@ -1,0 +1,28 @@
+@startuml
+actor Customer as c
+
+package Sales {
+  usecase "Purchase Order" as PO #lightgreen
+  usecase "Work Order" as WO #lightblue
+  usecase "Shipment" as SM #FFBBCC
+}
+
+package Inventory {
+  usecase "Pick Slip" as PS #FFBBCC
+  usecase "Inventory" as Inv #lightgreen
+}
+
+package Product {
+  usecase "Product" as Prod #FFBBCC
+}
+
+c --> PO #blue;line.dotted;text:blue : Submits
+WO <|-- PO : Generates
+PO --|> SM : Generates
+SM --> c #blue;line.dotted;text:blue : Receives
+WO --> Prod : Contains
+PO --> Prod : Contains
+PS --> SM : Fulfills
+PS --> Inv : Alters
+WO --|> Inv : Generates
+@enduml

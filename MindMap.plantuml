@@ -1,0 +1,7 @@
+@startmindmap
++[#lightblue] Work Order
+++[#lightgreen] Purchase Order
++++[#FFBBCC] Pick Slip
+++[#lightgreen] Inventory
++++[#FFBBCC] Shipments
+@endmindmap

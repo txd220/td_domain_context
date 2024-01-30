@@ -1,0 +1,31 @@
+@startuml
+class SalesOrder{
++SalesOrderKey: ENUM
+}
+
+class PurchaseOrder {
++PurchaseOrderKey: ENUM
++SalesOrder: SalesOrder
++Territory: Territory
++LineItems: []LineItem
+}
+
+class LineItem {
++Product: Product
++Quantity: Integer
+}
+
+class Product {
++ProductKey: ENUM
+}
+
+class Territory {
++TerritoryKey: ENUM
++Name: String
+}
+
+PurchaseOrder *-- SalesOrder
+Territory *-- PurchaseOrder
+LineItem o-- PurchaseOrder
+Product *-- LineItem
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "SalesOrder" as SO {
+  *sales_order_id : ENUM <<generated>>
+  --
+  territory_id : ENUM <<FK>>
+  name : text
+  description : text
+}
+
+entity "Territory" as T {
+  *territory_id : ENUM <<generated>>
+  --
+  name : text
+}
+
+entity "PurchaseOrder" as PO {
+  *purchase_order_id : ENUM <<generated>>
+  --
+  *customer_id : ENUM <<FK>>
+  other_details : text
+}
+
+entity "LineItem" as LI {
+  *product_id : ENUM <<FK>>
+  *purchase_order_id : ENUN <<FK>>
+  --
+  *card_id : number <<FK>>
+  other_details : text
+}
+
+entity "Product" as P {
+  *product_id : ENUM <<generated>>
+  --
+  name: text
+  other_details : text
+}
+
+
+entity "Inventory" as INV {
+  *product_id : ENUM <<FK>>
+  *location_id: ENUM <<FK>>
+  --
+  user_id : number <<FK>>
+  other_details : text
+}
+
+T ||..o{ SO
+SO ||..|{ PO
+SO ||..|{ LI
+P ||..|{ LI
+P ||..o{ INV
+
+@enduml
