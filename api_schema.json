@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "SalesOrder",
+    "description": "A request to purchase products and services from Sherwin Williams",
+    "type": "object",
+    "properties": {
+        "salesOrderId": {
+            "description":"Unique identifier for the Sales Order as an ENUM",
+            "type": "string"
+        },
+        "territory": {
+            "description": "The territory the sales order belongs to",
+            "type": "object",
+            "properties": {
+                "territoryId": {
+                    "description": "Unique identifier for the territory as an ENUM",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The business name of the territory",
+                    "type": "string"
+                },
+                "code": {
+                    "description": "An alpha-numeric code for the territory used in reporting, accounting, and BI sytems",
+                    "type": "string"
+                }
+            },
+            "required": ["territoryId","name","code"]
+        },
+        "purchaseOrders": {
+            "description": "A collection of Purchase Orders owned by the Sales Order.",
+            "type": "array",
+            "items" : {
+                "type": "object",
+                "properties": {
+                    "purchaseOrderId": {
+                        "type": "string",
+                        "description": "Unique identifier for the Purchase Order as an ENUM"
+                    }
+                },
+                "required": ["purchaseOrderId"]
+            }
+        }
+    },
+    "required": ["salesOrderId"]
+}    
