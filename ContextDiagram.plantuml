@@ -1,10 +1,12 @@
 @startuml
+left to right direction
 actor Customer as c
 
 package "Manufacturing & Distribution" as MD {
   usecase "Color" as color #lightblue
   usecase "Inventory" as inv #lightblue
   usecase "Logistics" as log #lightblue
+  usecase "Territory" as terr #lightgreen
   usecase "Manufacturing" as man #lightblue
   usecase "Procurement" as proc #lightblue
   usecase "Product" as prod #lightblue
@@ -34,4 +36,9 @@ sup --> proc : Fulfills
 man --> inv : Generates
 so --> log : Uses
 sales --> so : Submits
+log --> terr : Contains
+cust --> terr : Within
+sales --> terr : Grouped By
+so --> terr : Within
+man --> color : Uses
 @enduml
