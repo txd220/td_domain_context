@@ -1,28 +1,37 @@
 @startuml
 actor Customer as c
 
-package Sales {
-  usecase "Purchase Order" as PO #lightgreen
-  usecase "Work Order" as WO #lightblue
-  usecase "Shipment" as SM #FFBBCC
+package "Manufacturing & Distribution" as MD {
+  usecase "Color" as color #lightblue
+  usecase "Inventory" as inv #lightblue
+  usecase "Logistics" as log #lightblue
+  usecase "Manufacturing" as man #lightblue
+  usecase "Procurement" as proc #lightblue
+  usecase "Product" as prod #lightblue
+  usecase "Product Information" as pi #lightblue
+  usecase "Sales Order" as so #lightblue
+  usecase "Supplier" as sup #lightblue
 }
 
-package Inventory {
-  usecase "Pick Slip" as PS #FFBBCC
-  usecase "Inventory" as Inv #lightgreen
+package "Sales & Marketing" as sm {
+  usecase "Customer" as cust #lightblue
+  usecase "Marketing" as market #lightblue
+  usecase "Sales" as sales #lightblue
 }
 
-package Product {
-  usecase "Product" as Prod #FFBBCC
-}
-
-c --> PO #blue;line.dotted;text:blue : Submits
-WO <|-- PO : Generates
-PO --|> SM : Generates
-SM --> c #blue;line.dotted;text:blue : Receives
-WO --> Prod : Contains
-PO --> Prod : Contains
-PS --> SM : Fulfills
-PS --> Inv : Alters
-WO --|> Inv : Generates
+c --> so #blue;line.dotted;text:blue : Submits
+c <-- market #blue;line.dotted;text:blue : Targets
+market --> cust : Creates
+cust --> sales : Generates
+log --> inv : Transports
+so --> inv : Consumes
+so --> man : Generates
+so --> prod :  References
+prod --> pi : Uses
+so --> proc : Uses
+prod <-- man : Uses
+sup --> proc : Fulfills
+man --> inv : Generates
+so --> log : Uses
+sales --> so : Submits
 @enduml
