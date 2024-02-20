@@ -1,0 +1,34 @@
+{
+    "namespace": "sherwin.sales_order.avro",
+    "type": "record",
+    "name": "SalesOrder",
+    "fields": [
+        {
+            "name": "salesOrderId", 
+            "type": "string"
+        },
+        {
+            "name": "territory",  
+            "type": {
+                "type": "record",
+                "name": "territory",
+                "fields": [
+                    {"name":"territoryId", "type":"string"},
+                    {"name":"name", "type":"string"},
+                    {"name":"code", "type":"string"}
+                ]
+            }
+        },
+        {
+            "name": "purchaseOrders", 
+            "type": ["array", "null"],
+            "items": {
+                "type":"record",
+                "name": "PurchaseOrder",
+                "fields": [
+                    {"name":"purchaseOrderId","type":"string"}
+                ]
+            }
+        }
+    ]
+}

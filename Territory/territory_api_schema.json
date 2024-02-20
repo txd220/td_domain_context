@@ -1,0 +1,59 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "Territory",
+    "description": "A grouping of customers within a given geography managed by a Sherwin Sales Representative",
+    "type": "object",
+    "properties": {
+        "territoryId": {
+            "description":"Business key for territory",
+            "type": "string"
+        },
+        "name": {
+            "description":"Sherwin business name given for the territory",
+            "type":"string"
+        },
+        "source": {
+            "description":"Source system the territory came from",
+            "type":"string"
+        },
+        "lastUpdatedDate": {
+            "description":"The date the terriroty was last modified in the source system",
+            "type":"date"
+        },
+        "role": {
+            "description":"Heirarchical role territory belongs to",
+            "type":"string"
+        },
+        "businessUnit": {
+            "description":"Sherwin business unit the territory belongs too",
+            "type":"string"
+        },
+        "owners": {
+            "description": "A collection of Purchase Orders owned by the Sales Order.",
+            "type": "array",
+            "items" : {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "type": "string"
+                    },
+                    "code": {
+                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "type": "string"
+                    },
+                    "lastUpdatedDate": {
+                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "type": "date"
+                    }
+                }
+            }
+        }
+    },
+    "required": ["territoryId", "name", "businessUnit", "role"]
+}    
