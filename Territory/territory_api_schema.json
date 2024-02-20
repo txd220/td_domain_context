@@ -59,7 +59,7 @@
                     },
                     "lastUpdatedDate": {
                         "description": "Date of the last change to the ownership record",
-                        "type": "date"
+                        "type": "string"
                     }
                 }
             }
@@ -92,18 +92,18 @@
                     },
                     "effectiveStartDate": {
                         "description": "Date the worker.s relationship with the territory began",
-                        "type": "date"
+                        "type": "string"
                     },
                     "effectiveEndDate": {
                         "description": "Date the worker's relationship with the territory ends",
-                        "type": "date"
+                        "type": "string"
                     }
                 }
             }
         },
         "lastUpdatedDate": {
             "description":"The date the terriroty was last modified in the source system",
-            "type":"date"
+            "type":"string"
         }
     },
     "required": ["territoryId", "name", "businessUnit", "role","heirarchyCode"]
