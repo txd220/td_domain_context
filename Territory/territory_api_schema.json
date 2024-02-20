@@ -35,13 +35,16 @@
             "properties": {
                 "code": {
                     "description":"Unique identifier for a specific territory.  TODO: Feels like an ENUM",
-                    "type":"string"
+                    "type":"string",
+                    "minLength": 2,
+                    "maxLength": 7
                 },
                 "name": {
                     "description": "Human readable unique identifier for the location",
                     "type": "string"
                 }
-            }
+            },
+            "required": ["code", "name"]
         },
         "owners": {
             "description": "A collection of relationships to other territories.",
@@ -55,13 +58,16 @@
                     },
                     "code": {
                         "description": "Unique identifier for the ownership record",
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 7
                     },
                     "lastUpdatedDate": {
                         "description": "Date of the last change to the ownership record",
                         "type": "string"
                     }
-                }
+                },
+                "required": ["type", "code"]
             }
         },
         "workforce": {
@@ -98,7 +104,8 @@
                         "description": "Date the worker's relationship with the territory ends",
                         "type": "string"
                     }
-                }
+                },
+                "required": ["personNumber", "firstName", "lastName"]
             }
         },
         "lastUpdatedDate": {
