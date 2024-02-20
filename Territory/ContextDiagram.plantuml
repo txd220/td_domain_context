@@ -1,0 +1,38 @@
+@startuml
+
+actor Customer as c
+actor "Sales Representative" as sr
+actor "Sales Manageer" as sm
+
+package "Sales & Marketiing" as s {
+    usecase "Customer" as cust #lightblue
+    usecase "Territory" as terr #lightgreen
+    usecase "Marketing" as market #lightblue
+    usecase "Sales" as sales #lightblue
+}
+
+package "Manufacturing & Distribution" as MD {
+    usecase "Logistics" as log #lightblue
+    usecase "Heirarchy" as he #FFBBCC
+    usecase "Product" as prod #lightblue
+    usecase "Product Information" as pi #lightblue
+    usecase "Sales Order" as so #lightblue
+}
+
+log --> terr:Consumes
+c --> sales: Submits Orders
+so --> terr:Allocated To
+sales --> so: Generates
+c --> sr: Submits Orders
+sr --> so: Generates
+he --> terr: Organizes
+sr --> he: Works Within
+sm --> terr:Oversees
+so --> prod: Contains
+pi --> prod: Describes
+c --> cust: Works In
+market --> cust: Targets
+cust --> sales: Generates
+he --> he: Nested
+
+@enduml
