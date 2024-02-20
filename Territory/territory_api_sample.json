@@ -1,0 +1,45 @@
+{
+    "territoryId": "ABCDEFGHIJKLMN",
+    "name": "ABCDEFGHIJK",
+    "businessUnit": "ABCD",
+    "role": "ABCDEFGHIJKLMNOPQRSTUVW",
+    "heirarchyCode": "ABCDEFGHI",
+    "source": "ABCDEFGHIJKLM",
+    "location": {
+      "code": "ABCDEF",
+      "name": "ABCDEFGHIJK"
+    },
+    "owners": [
+      {
+        "type": "ABCDEFGHIJKLMNOPQRSTUVWX",
+        "code": "ABCDE",
+        "lastUpdatedDate": "ABCDEFGHIJKLM"
+      },
+      {
+        "type": "ABCDEFGHIJKLMNOPQRSTUVWXYZA",
+        "code": "ABCD",
+        "lastUpdatedDate": "ABCDEFGHIJKLMNOPQRSTUVWXY"
+      }
+    ],
+    "workforce": [
+      {
+        "personNumber": "ABCDE",
+        "firstName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABC",
+        "lastName": "ABCDEFGHIJKLMN",
+        "adUserId": "ABCDEFGHIJKLMNOPQ",
+        "fullName": "ABCDEFG",
+        "effectiveStartDate": "ABCDEFGHI",
+        "effectiveEndDate": "ABCDEFG"
+      },
+      {
+        "personNumber": "ABCDEFGHIJKLMNOPQRSTUVW",
+        "firstName": "ABCDEFGHIJKLMNOPQ",
+        "lastName": "ABCDEFGHIJKLMNOPQ",
+        "adUserId": "ABCDE",
+        "fullName": "ABCDEFGHIJKLMNOPQRS",
+        "effectiveStartDate": "ABCDEFGHI",
+        "effectiveEndDate": "ABCDEF"
+      }
+    ],
+    "lastUpdatedDate": "ABCDEFGHIJKLM"
+  }
