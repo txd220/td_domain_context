@@ -6,8 +6,12 @@
     "type": "object",
     "properties": {
         "territoryId": {
-            "description":"Business key for territory",
+            "description":"Business key for territory.  Two-part natural key with businessUnit.",
             "type": "string"
+        },
+        "businessUnit": {
+            "description":"Sherwin business unit the territory belongs too.  Two-part natural key with territoryId.",
+            "type":"string"
         },
         "name": {
             "description":"Sherwin business name given for the territory",
@@ -17,43 +21,90 @@
             "description":"Source system the territory came from",
             "type":"string"
         },
-        "lastUpdatedDate": {
-            "description":"The date the terriroty was last modified in the source system",
-            "type":"date"
-        },
         "role": {
             "description":"Heirarchical role territory belongs to",
             "type":"string"
         },
-        "businessUnit": {
-            "description":"Sherwin business unit the territory belongs too",
+        "heirarchyCode": {
+            "description":"The code for the heirarchy associated with this territory",
             "type":"string"
         },
+        "location": {
+            "description":"Geographic region for the territory.  UNITES STATES, US, etc.",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description":"Unique identifier for a specific territory.  TODO: Feels like an ENUM",
+                    "type":"string"
+                },
+                "name": {
+                    "description": "Human readable unique identifier for the location",
+                    "type": "string"
+                }
+            }
+        },
         "owners": {
-            "description": "A collection of Purchase Orders owned by the Sales Order.",
+            "description": "A collection of relationships to other territories.",
             "type": "array",
             "items" : {
                 "type": "object",
                 "properties": {
                     "type": {
-                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "description": "Classification for the ownership.  TODO: Feels like an ENUM",
                         "type": "string"
                     },
                     "code": {
-                        "description": "Unique identifier for the Purchase Order as an ENUM",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "description": "Unique identifier for the ownership record",
                         "type": "string"
                     },
                     "lastUpdatedDate": {
-                        "description": "Unique identifier for the Purchase Order as an ENUM",
+                        "description": "Date of the last change to the ownership record",
                         "type": "date"
                     }
                 }
             }
+        },
+        "workforce": {
+            "description": "A collection of Sherwin workers that have a relationship with the territory.",
+            "type": "array",
+            "items" : {
+                "type": "object",
+                "properties": {
+                    "personNumber": {
+                        "description": "Unique identifier for the worker",
+                        "type": "string"
+                    },
+                    "adUserId": {
+                        "description": "Active Directory user ID",
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "description": "Worker's legal first name",
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "description": "Worker's legal last name",
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "description": "Worker's full name",
+                        "type": "string"
+                    },
+                    "effectiveStartDate": {
+                        "description": "Date the worker.s relationship with the territory began",
+                        "type": "date"
+                    },
+                    "effectiveEndDate": {
+                        "description": "Date the worker's relationship with the territory ends",
+                        "type": "date"
+                    }
+                }
+            }
+        },
+        "lastUpdatedDate": {
+            "description":"The date the terriroty was last modified in the source system",
+            "type":"date"
         }
     },
-    "required": ["territoryId", "name", "businessUnit", "role"]
+    "required": ["territoryId", "name", "businessUnit", "role","heirarchyCode"]
 }    
