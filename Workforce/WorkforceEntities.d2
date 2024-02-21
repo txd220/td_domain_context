@@ -1,0 +1,13 @@
+worker: {
+    shape:sql_table
+    workerNumber: string {constraint: primary_key}
+    adUserId: string {constraint: foreign_key}
+}
+
+ad_user: {
+    shape: sql_table
+    id: GUID {constraint: primary_key}
+    workerNumber: string {constraint: foreign_key}
+}
+
+ad_user.id -> worker.workerNumber
