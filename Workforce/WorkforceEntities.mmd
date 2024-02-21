@@ -1,0 +1,15 @@
+---
+title: Workforce Entities
+---
+classDiagram
+    class Worker {
+        +workerNumber
+        +adUserId
+    }
+
+    class ADUser{
+        +userId
+        +workerNumber
+    }
+
+    Worker <|-- ADUser: Is A

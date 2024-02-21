@@ -1,0 +1,20 @@
+Workforce: {
+    Worker: {
+      Employee: {
+        shape: person
+        style.multiple: true
+      }
+      Contractor: {
+        shape: person
+        style.multiple: true
+      }
+    }
+    Active Directory: {
+      User: {
+        shape: person
+        style.multiple: true
+      }
+    }
+  
+    Active Directory -> Worker: Is A
+  }
