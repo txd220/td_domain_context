@@ -2,6 +2,7 @@
     "namespace": "sherwin.sales_order.avro",
     "type": "record",
     "name": "territory",
+    "doc": "Date-effective many-to-one relationship between customer or distribution channel and customer facing Sherwin-Williams role",
     "fields": [
         {
             "name":"territoryId",
