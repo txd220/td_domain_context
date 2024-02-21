@@ -37,7 +37,5 @@ Rel(sales_manager, area, "Owns")
 Rel(sales_manager, region, "Owns")
 
 UpdateRelStyle(sales_rep, terr, $offsetY="-40", $offsetX="40")
-UpdateRelStyle(sales_manager, $offsetY="40", $offsetX="4")
-UpdateRelStyle(sales_manager, $offsetY="40", $offsetX="4")
-UpdateRelStyle(sales_manager, $offsetY="40", $offsetX="4")
+UpdateRelStyle(cust, terr, $offsetY="40", $offsetX="4")
 ```
