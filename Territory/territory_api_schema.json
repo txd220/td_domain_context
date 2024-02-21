@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://example.com/product.schema.json",
     "title": "Territory",
-    "description": "A grouping of customers within a given geography managed by a Sherwin Sales Representative",
+    "description": "Date-effective many-to-one relationship between customer or distribution channel and customer facing Sherwin-Williams role",
     "type": "object",
     "properties": {
         "territoryId": {
