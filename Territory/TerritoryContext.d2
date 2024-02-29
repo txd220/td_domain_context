@@ -1,0 +1,36 @@
+Sales and Marketing: {
+
+    Customer: {
+
+    }
+
+    Marketing: {
+
+    }
+
+    Sales: {
+        Sales Rep: {
+            shape: person
+            style.multiple: true
+        }
+        Sales Mgr: {
+            shape: person
+            style.multiple: true
+        }
+        Territory
+        Role
+        Location
+        Owner
+        Hierarchy
+        
+        Territory -> Role: Has A
+        Territory -> Hierarchy: Within
+        Territory -> Location: Has Many
+        Territory -> Owner: Has A
+
+        Sales Rep -> Sales Mgr: Supervised By
+        Territory -> Sales Rep: Managed By
+        Territory -> Sales Mgr: Owned By
+    }
+
+}

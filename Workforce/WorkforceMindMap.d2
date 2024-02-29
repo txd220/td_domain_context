@@ -1,11 +1,46 @@
+direction: right
 Workforce
 Workforce.Worker
-Workforce.Worker.Employee
-Workforce.Worker.Contractor
-Workforce.Worker.Retiree
+Workforce.Worker.Employee: {
+    shape: person
+    style.multiple: true
+  }
+Workforce.Worker.Contractor: {
+    shape: person
+    style.multiple: true
+  }
+Workforce.Worker.Retiree: {
+    shape: person
+    style.multiple: true
+  }
 Workforce.User
-Workforce.User.Active Directory
+Workforce.User.Active Directory: {
+    shape:cylinder
+    
+}
 
-Workforce.User -> Workforce.Worker: Is A
+Workforce.Oracle HCM:{
+    shape:cloud
+    
+}
 
-Customer
+Workforce.Event Hub: {
+    shape:cloud
+    
+}
+
+Workforce.BUPL
+Workforce.BUPL.Worker Event Consumer
+Workforce.BUPL.Workforce ODS: {
+    shape:cylinder
+}
+Workforce.BUPL.Workforce API
+
+Workforce.Worker -> Workforce.Oracle HCM: Belongs To
+Workforce.Oracle HCM -> Workforce.User.Active Directory: Worker Feed
+Workforce.Oracle HCM -> Workforce.Event Hub: Workforce CDC
+Workforce.Event Hub -> Workforce.BUPL.Worker Event Consumer: Workforce Events
+Workforce.User.Active Directory -> Workforce.BUPL.Worker Event Consumer: Active Directory ID
+Workforce.BUPL.Worker Event Consumer -> Workforce.BUPL.Workforce ODS: Workforce Sync
+Workforce.BUPL.Workforce ODS -> Workforce.BUPL.Workforce API: Reads
+Workforce.BUPL.Workforce API -> Workforce.Oracle HCM: Writes, Updates, Deletes

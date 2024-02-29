@@ -2,6 +2,8 @@ worker: {
     shape:sql_table
     workerNumber: string {constraint: primary_key}
     adUserId: string {constraint: foreign_key}
+    isSupervisor: bool
+    supervisorId: string {constraint: foreign_key}
 }
 
 ad_user: {
@@ -10,4 +12,33 @@ ad_user: {
     workerNumber: string {constraint: foreign_key}
 }
 
-ad_user.id -> worker.workerNumber
+salary: {
+    shape: sql_table
+    id: GUID {constraint: primary_key}
+    salary: double
+}
+
+address: {
+    shape: sql_table
+    id: GUID {constraint: primary_key}
+}
+
+work_structure: {
+    shape: sql_table
+    id: GUID {constraint: primary_key}
+}
+
+assignment: {
+    shape: sql_table
+    id: GUID {constraint: primary_key}
+    work_structure_id: GUID {constraint: foreign_key}
+    worker_id: GUID {constraint: foreign_key}
+}
+
+ad_user.id -> worker: m:1
+salary -> worker: m:1
+address -> worker: m:1
+worker -> worker: Supervisor Ref
+
+assignment -> work_structure: 1:m
+assignment -> worker: 1:m

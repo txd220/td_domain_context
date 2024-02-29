@@ -1,3 +1,4 @@
+direction: right
 Workforce: {
     Worker: {
       Employee: {
@@ -8,13 +9,24 @@ Workforce: {
         shape: person
         style.multiple: true
       }
+      Supervisor: {
+        shape: person
+        style.multiple: true
+      }
+      Employee -> Supervisor: Has|Is A
+      Contractor -> Supervisor: Has A      
     }
+    Worker -> Work Structure: Within
+
     Active Directory: {
       User: {
         shape: person
         style.multiple: true
       }
     }
-  
-    Active Directory -> Worker: Is A
+    
+    Worker -> Salary: Has A
+    Worker -> Address: Has A
+    Active Directory -> Worker: Is An
+    
   }

@@ -1,0 +1,166 @@
+{
+  "namespace": "com.sherwin.bupl.avro",
+  "type": "record",
+  "name": "Territory",
+  "doc": "Date-effective many-to-one relationship between customer or distribution channel and customer facing Sherwin-Williams role",
+  "fields": [
+    {
+      "name": "territoryId",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "businessUnit",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "name",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "source",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "role",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "heirarchyCode",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "location",
+      "type": {
+        "type": "record",
+        "name": "Location",
+        "fields": [
+          {
+            "name": "code",
+            "type": {
+              "type": "string",
+              "avro.java.string": "String"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "type": "string",
+              "avro.java.string": "String"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "owners",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "Owner",
+          "type": "record",
+          "fields": [
+            {
+              "name": "type",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "code",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "lastUpdatedDate",
+              "type": "int",
+              "logicalType": "date"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "workforce",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "Worker",
+          "type": "record",
+          "fields": [
+            {
+              "name": "personNumber",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "asUserId",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "firstName",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "lastName",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "fullName",
+              "type": {
+                "type": "string",
+                "avro.java.string": "String"
+              }
+            },
+            {
+              "name": "effectiveStartDate",
+              "type": "int",
+              "logicalType": "date"
+            },
+            {
+              "name": "effectiveEndDate",
+              "type": "int",
+              "logicalType": "date"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "lastUpdatedDate",
+      "type": "int",
+      "logicalType": "date"
+    }
+  ]
+}
