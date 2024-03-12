@@ -6,15 +6,16 @@ Sales and Marketing: {
         shape: Person
     }
     Sales Orders: {
-        Requests
-        Fullfillments
-        Shipments
+        Order Request
+        Order Fullfillment
         Work Orders
-        Requests -> Fullfillments: Generates
-        Fullfillments -> Shipments: Generates
-        Requests -> Shipments: References
-        Requests -> Work Orders: Generates
-        Fullfillments -> Work Orders: Generates
+        Shipments
+        Order Request -> Fullfillments: Generates
+        Order Fullfillment -> Shipments: Generates
+        Order Request -> Shipments: References
+        Order Request -> Work Orders: Can Generate
+        Order Fullfillment -> Work Orders: Can Generate
+        Work Orders -> Shipments: Generates
     }
   
     Products
@@ -24,14 +25,14 @@ Sales and Marketing: {
     Inventory -> Sales Orders: Consumes
     Customers -> Sales Orders: |md
      Submits 
+     Order
      Requests
     |
-    Customers -> Sales Orders: |md
-    Requests 
-    Request 
+    Sales Orders -> Customers: |md 
+    Order 
     Status
     |
-    Employees -> Sales Orders: |md 
+    Sales Orders -> Employees: |md 
     Tracks 
     Fullfillment 
     Status
