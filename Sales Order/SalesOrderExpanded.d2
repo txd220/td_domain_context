@@ -1,0 +1,44 @@
+Sales and Marketing: {
+    Customers: {
+        shape: Person
+    }
+    Employees: {
+        shape: Person
+    }
+    Sales Orders: {
+        Requests
+        Fullfillments
+        Shipments
+        Work Orders
+        Requests -> Fullfillments: Generates
+        Fullfillments -> Shipments: Generates
+        Requests -> Shipments: References
+        Requests -> Work Orders: Generates
+        Fullfillments -> Work Orders: Generates
+    }
+  
+    Products
+
+    Inventory
+
+    Inventory -> Sales Orders: Consumes
+    Customers -> Sales Orders: |md
+     Submits 
+     Requests
+    |
+    Customers -> Sales Orders: |md
+    Requests 
+    Request 
+    Status
+    |
+    Employees -> Sales Orders: |md 
+    Tracks 
+    Fullfillment 
+    Status
+    |
+    Products -> Sales Orders: |md
+    Products 
+    Purchased
+    |
+}
+

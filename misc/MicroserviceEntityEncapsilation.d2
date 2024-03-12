@@ -1,0 +1,14 @@
+direction: right
+Microservice Entity Pattern{
+    Client
+    Service
+    Repository
+    Datastore: {
+        shape: Cylinder
+    }
+
+    Client -> Service: RequestEntity
+    Service -> Client: ResponseEntity
+    Service -> Repository: DTO
+    Repository -> Datastore: <DB Dialect>
+}

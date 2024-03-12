@@ -1,0 +1,18 @@
+Sales and Marketing: {
+    Customers: {
+        shape: Person
+    }
+    Employees: {
+        shape: Person
+    }
+    Sales Orders
+    Shipments
+    Work Orders
+
+    Customers -> Sales Orders: Submits
+    Sales Orders -> Shipments: Generates
+    Shipments -> Customers: Ships To
+    Sales Orders -> Work Orders: Generates
+    Customers -> Sales Orders: Requests Status
+    Employees -> Sales Orders: Tracks Status
+}
