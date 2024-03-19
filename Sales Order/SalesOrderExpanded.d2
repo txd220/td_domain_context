@@ -1,45 +1,82 @@
+direction: down
 Sales and Marketing: {
-    Customers: {
-        shape: Person
+    Customer: {
+        Locations
     }
-    Employees: {
-        shape: Person
+    Sales: {
+        Pricing Contracts
     }
+    Customer -> Sales: Generates
+}
+Corporate Functions: {
+    Workforce
+    Store Locations
+}
+Manufacturing and Distribution: {
+      
     Sales Orders: {
-        Order Request
-        Order Fullfillment
-        Work Orders
-        Shipments
-        Order Request -> Fullfillments: Generates
-        Order Fullfillment -> Shipments: Generates
-        Order Request -> Shipments: References
-        Order Request -> Work Orders: Can Generate
-        Order Fullfillment -> Work Orders: Can Generate
-        Work Orders -> Shipments: Generates
+        Sales Order
+        Order Request: {
+            Line Items
+        }     
+        Sales Transaction: {
+            Line Items
+        }
+        Invoices
+        Purchase Order
+        Payments?
+
+        Order Request -> Purchase Order: Generates        
+        Order Request -> Sales Transaction: Can Generate        
+        Order Request -> Sales Order: Is A Child Of
+        Sales Transaction -> Sales Order: Is A Child Of
+        Sales Transaction -> Invoices: Generates
     }
   
-    Products
+    Logistics: {
+        Shipments
+    }
+
+    Sales Orders.Purchase Order -> Sales Orders.Sales Order: |md
+    Is Fullfilled 
+    By Another
+    |
+        
+    Manufacturing: {
+        Work Orders: {
+            Shop Orders
+            Manufacturing Work Order
+        }
+    }
+
+    Product: {
+        Made to Order Color Items
+    }
+
+    Sales Orders -> Product: References
+    Sales Orders.Order Request -> Manufacturing.Work Orders: Can Generate
+    Sales Orders.Sales Transaction -> Manufacturing.Work Orders: Can Generate
+    Sales Orders.Sales Transaction -> Logistics.Shipments: Generates
+    Sales Orders.Order Request -> Logistics.Shipments: References
+    Manufacturing.Work Orders -> Logistics.Shipments: Generates
 
     Inventory
 
     Inventory -> Sales Orders: Consumes
-    Customers -> Sales Orders: |md
-     Submits 
-     Order
-     Requests
-    |
-    Sales Orders -> Customers: |md 
-    Order 
-    Status
-    |
-    Sales Orders -> Employees: |md 
-    Tracks 
-    Fullfillment 
-    Status
-    |
-    Products -> Sales Orders: |md
-    Products 
-    Purchased
-    |
+   
 }
 
+Sales and Marketing.Sales -> Manufacturing and Distribution.Sales Orders: |md
+Submits 
+Order
+Requests
+|
+Manufacturing and Distribution.Sales Orders -> Sales and Marketing.Customer: |md 
+Order 
+Status
+|
+Manufacturing and Distribution.Sales Orders -> Corporate Functions.Workforce: |md 
+Tracks 
+Fullfillment 
+Status
+|
