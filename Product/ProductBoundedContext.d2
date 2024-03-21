@@ -1,0 +1,19 @@
+ManDist: Manufacturing and Distribution {
+    Inventory
+    Product: {
+        Planning
+        Safety Data Sheets
+    }
+    Product Formulation
+    Costing
+    Sales Orders
+}
+CorpFunct: Corporate Functions {
+    Regulatory
+}
+
+ManDist.Product -> ManDist.Inventory: Generates
+ManDist.Costing -> ManDist.Product: Uses
+ManDist.Sales Orders -> ManDist.Product: References
+ManDist.Product -> CorpFunct.Regulatory: Governed By
+ManDist.Product <-> ManDist.Product Formulation: Used By & Uses
